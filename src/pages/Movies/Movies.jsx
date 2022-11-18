@@ -57,7 +57,7 @@ const Movies = () => {
 
     return (
         <>
-            <Suspense fallback={<div>Loading ...</div>}>
+            <Suspense fallback={<Loader />}>
             <Searchbar onSubmit={handleSubmit} />
               {loading && <Loader/>}
               {error && <ErrorView />}
