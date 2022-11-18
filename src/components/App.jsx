@@ -2,20 +2,21 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 
 
-const Home = lazy(() => import('../pages/Home'));
-const Movies = lazy(() => import('../pages/Movies'));
-const MovieDetails = lazy(() => import('../pages/MovieDetails'));
-const Cast = lazy(() => import('../components/Cast'));
-const Reviews = lazy(() => import('../components/Reviews'));
-const Layout = lazy(() => import('../components/Layout'));
+
+const Home = lazy(() => import('pages/Home'));
+const Movies = lazy(() => import('pages/Movies'));
+const MovieDetails = lazy(() => import('pages/MovieDetails'));
+const Cast = lazy(() => import('components/Cast'));
+const Reviews = lazy(() => import('components/Reviews'));
+const SharedLayout = lazy(() => import('components/SharedLayout'));
 
 
 
-export const App = () => {
+const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />  
           <Route path="movies" element={<Movies />} />
           <Route path="movies/:movieId" element={<MovieDetails />}>
@@ -29,3 +30,5 @@ export const App = () => {
     </>
   );
 };
+
+export default App;
