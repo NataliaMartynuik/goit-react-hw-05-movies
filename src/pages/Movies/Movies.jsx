@@ -1,6 +1,6 @@
 import { Searchbar } from "components/SearchBar/SearchBar";
 import { fetchMovieSearch } from "fetchApi"; 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -57,12 +57,14 @@ const Movies = () => {
 
     return (
         <>
+            <Suspense fallback={<div>Loading ...</div>}>
             <Searchbar onSubmit={handleSubmit} />
               {loading && <Loader/>}
               {error && <ErrorView />}
              {movies && <MovieGallery movies={movies}
                 location={location} />}
-            <ToastContainer position="top-center" autoClose={2000} />
+                <ToastContainer position="top-center" autoClose={2000} />
+                </Suspense>
         </>
     )
 }

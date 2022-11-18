@@ -1,17 +1,20 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
+import { lazy, Suspense } from "react";
 import SharedLayout from './SharedLayout/SharedLayout';
-import Home from 'pages/Home/Home';
-import Movies from 'pages/Movies/Movies';
-import MovieDetails from 'pages/MovieDetails/MovieDetails';
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
+import { Loading } from './Loader/Loader';
 
 
 
+const Movies = lazy(() => import('pages/Movies'));
+const Home = lazy(() => import('pages/Home'));
+const MovieDetails = lazy(() => import('pages/MovieDetails'));
+const Cast = lazy(() => import('components/Cast'));
+const Reviews = lazy(() => import('components/Reviews'));
 
 const App = () => {
   return (
     <>
+      <Suspense fallback={<Loading />} >
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />  
@@ -23,7 +26,7 @@ const App = () => {
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-
+      </Suspense>
     </>
   );
 };
