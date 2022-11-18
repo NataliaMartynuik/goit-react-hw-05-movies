@@ -17,7 +17,10 @@ export const NavItems = styled(NavLink)`
   color: ${({ theme: { colors } }) => colors.secondary};
   font-size: 25px;
   font-weight: 700;
-  &.active,
+  &.active {
+    color: ${({ theme: { colors } }) => colors.primary};
+  }
+
   &:hover {
     color: ${({ theme: { colors } }) => colors.primary};
   }
