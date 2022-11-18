@@ -6,24 +6,25 @@ import { Wrapper, Info, Card, Img } from './MovieGallery.styled';
 
 const MovieGallery = ({ movies, location }) => {
     return (
-        <>
+        
             <Wrapper>
-                {movies.map(({ id, title, poster_path }) => (
-                 
+                {movies.length > 0 && movies.map(({ id, title, poster_path }) => (
+                  <li key={id}>
                           
-                    <Card key={id}>
-                       <Link to={`/movies/${id}`} state={{ from: location }}>
+                    
+                        <Link to={`/movies/${id}`} state={{ from: location }}>
+                         <Card key={id} >   
                         <Img src={poster_path ? `${BASE_URL_IMG}/${poster_path}` : fallback} alt={title} />
                         <Info>
                             <h2>{title}</h2>
-                                </Info>  </Link>
-                    </Card>       
+                                </Info> 
+                         </Card>   </Link>     
                       
-                          
+                 </li>         
                         
                 ))}
             </Wrapper>
-        </>
+       
     )
 };
 export default MovieGallery;

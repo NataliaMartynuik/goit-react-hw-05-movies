@@ -9,7 +9,7 @@ const SharedLayout = () => {
         <Box>
             <AppBar />
            
-                <Outlet />
+            <Outlet />
           
         </Box>)
 }

@@ -38,7 +38,7 @@ export const Info = styled.div`
   }
 `;
 
-export const Card = styled.li`
+export const Card = styled.div`
   display: flex;
   align-items: flex-end;
   min-height: 300px;
